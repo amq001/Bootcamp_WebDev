@@ -7,7 +7,14 @@
 // are printed to the console.
 //
 
-
-function eventLoopRace() {}
+function eventLoopRace() {
+  console.log("1: Synchronous");
+  setTimeout(() => {
+    console.log("2: Macrotask (I/O)");
+  }, 0);
+  let p = new Promise((resolve) => resolve());
+  p.then(()=>console.log("3: Microtask (Promise)"));
+  console.log("4: Synchronous");
+}
 
 module.exports = eventLoopRace;
