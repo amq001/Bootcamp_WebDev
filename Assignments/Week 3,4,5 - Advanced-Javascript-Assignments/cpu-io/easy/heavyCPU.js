@@ -12,7 +12,7 @@ function heavyCPU(iterations) {
      let sum = 0;
 
     for (let i = 0; i < iterations; i++) {
-        sum += i; // doing some CPU work
+        sum += i;
     }
 
     return sum;
