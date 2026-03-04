@@ -11,6 +11,19 @@
 // - Process items in fixed-size chunks.
 // - Yield using setImmediate after each chunk.
 // - Call onComplete after all items are processed.
-function chunkedProcessor(items, processFn, onComplete) {}
+function chunkedProcessor(items, processFn, onComplete) {
+    let index = 0
+    function next(){
+    if (index>=items.length) {
+        return onComplete()        
+    }
+    
+        processFn(items[index])
+        index++
+
+        setImmediate(next)
+    }
+    next()
+}
 
 module.exports = chunkedProcessor;
